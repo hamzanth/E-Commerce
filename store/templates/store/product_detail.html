@@ -1,0 +1,64 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+	<main>
+		<section id="firstsection">
+			<div class="containers">
+				<div class="row1">
+					<div class="leftside">
+						<img src="{{ product.image.url }}" class="img-fluids">
+					</div>
+					<div class="rightside">
+						<div class="topbtn">
+							<a href="{% url 'store:store' %}" class="btn show">back</a>
+						</div>
+						<p><del>$200</del> ${{ product.price }}</p>
+                        {% if product.description %}
+						<h4>Description</h4>
+						<p>{{ product.description }}
+						</p>
+                        {% endif %}
+						<div class="buttons">
+							<!-- <span>1</span> -->
+							<input type="text" value="{{ cart_items }}" disabled="" class="btn">
+							<button class=" btn btn-primary update-cart" data-action="add" data-product="{{ product.id }}">add to cart</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="sectionsection">
+			<div class="containers">
+				<div class="content">
+					<div class="head">
+                        {% if product.additional_info %}
+						    <h5>Additional information</h5>
+						    <p>{{product.additional_info}}
+                        {% endif %}
+						</p>
+					</div>
+                    {% if product.other_images %}
+                        <h4 class="text-center mb-4">Other Product Images</h4>
+                    {% endif %}
+					<div class="showcased">
+                        {% if product.sub_image1 %}
+						<div class="imgs">
+							<img src="{{ product.sub_image1.url }}" class="img-fluid" alt="">
+						</div>
+                        {% endif %}
+						{% if product.sub_image2 %}
+						<div class="imgs">
+							<img src="{{ product.sub_image2.url }}" class="img-fluid" alt="">
+						</div>
+                        {% endif %}
+						{% if product.sub_image3 %}
+						<div class="imgs">
+							<img src="{{ product.sub_image3.url }}" class="img-fluid" alt="">
+						</div>
+                        {% endif %}
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+    {% endblock %}

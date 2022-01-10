@@ -1,0 +1,263 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping Site</title>
+	<link rel="stylesheet" href="{% static 'css/all.css' %}">
+	  <!-- Bootstrap -->
+	  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	  <!-- Custom -->
+	  <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+	  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+</head>
+<body>
+	<header>
+		<div class="containers">
+			<nav>
+				<div class="nav-brand">
+					<a href="{% url 'store:home' %}" class="brand">Hydra</a>
+				</div>
+				<div class="menu-icon open">
+					<i class="fa fa-bars"></i>
+				</div>
+				<ul class="nav-list">
+					<div class="menu-icon close">
+						<i class="fa fa-times"></i>
+					</div>
+					<li class="navitems">
+						<a href="{% url 'store:store' %}" class="store navlink">Shop</a>
+					</li>
+					<!-- <li class="navitems">
+						<a href="#" class="navlink">Woman<i class="fa fa-angle-down"></i></a>
+					</li>
+					<li class="navitems">
+						<a href="#" class="navlink">Man<i class="fa fa-angle-down"></i></a>
+					</li> -->
+					<li class="navitems">
+						<a href="{% url 'store:checkout' %}" class="navlink">Sale</a>
+					</li>
+					<li class="navitems">
+						<a href="#" class="navlink">Blog</a>
+					</li>
+					<li class="navitems">
+						<a href="#" class="navlink">Contact</a>
+					</li>
+				</ul>
+				<ul class="icon-list">
+					<li class="navitems">
+						<i class="fa fa-search navlin"></i>
+					</li>
+					<li class="navitems">
+						<i class="fa fa-cloud navlin"></i>
+					</li>
+					<li class="navitems">
+						<i class="fa fa-user navlin"></i><span>Login</span>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<main>
+		<section class="showcase">
+			<div class="contain slideshow">
+                <div class="myslide">
+                    <img src="{% static 'images/fourth.jpg' %}" alt="">
+                </div>
+                <div class="myslide">
+                    <img src="{% static 'images/third.jpg' %}" alt="">
+                </div>
+                <div class="myslide">
+                    <img src="{% static 'images/sec.jpg' %}" alt="">
+                </div>
+				<div class="main-message">
+					<!-- <h3>sales up to 50% off</h3> -->
+					<h1>s/s 2022 <br> collection</h1>
+					<a class="btn">Show Now <i class="fa fa-arrow-right right-arrow"></i> </a>
+				</div>
+			</div>
+		</section>
+		<section class="showcase2">
+			<div class="main">
+				<h4>Accessories<br><span>Everyones talking about</span></h4>
+				<a href="#">shop now <i class="fa fa-arrow-right"></i></a>
+			</div>
+			<div class="asides">
+				<div class="aside">
+					<h4>Woman<br><span>Elevated Comfort</span></h4>
+					<a href="#">shop now <i class="fa fa-arrow-right"></i></a>
+				</div>
+				<div class="aside">
+					<h4>Man<br><span>Your Wardrobe Refresh</span></h4>
+					<a href="#">shop now <i class="fa fa-arrow-right"></i></a>
+				</div>
+			</div>
+		</section>
+		<section class="showcase3">
+			<div class="contain">
+				<ul class="categories">
+					<li class="cat-items">
+						<a class="catlink" href="#">New Arrival</a>
+					</li>
+					<li class="cat-items">
+						<a class="catlink" href="#">Best Seller</a>
+					</li>
+					<li class="cat-items">
+						<a class="catlink" href="#">Final Stock</a>
+					</li>
+					<li class="cat-items">
+						<a class="catlink" href="#">New Arrival Sale</a>
+					</li>
+					<li class="cat-items">
+						<a class="catlink" href="#">Womens</a>
+					</li>
+					<li class="cat-items">
+						<a class="catlink" href="#">Mens</a>
+					</li>
+					<li class="cat-items">
+						<a class="catlink" href="#">Sale</a>
+					</li>
+					<li class="cat-items">
+						<a class="catlink" href="#">Accessories</a>
+					</li>
+				</ul>
+				<div class="image-gallery">
+                    {% for product in products %}
+					<div class="img">
+						<div class="content">
+							<img src="{{ product.image.url }}" alt="product" class="img-fluid">
+                            <!-- <div class="viewed">
+                                <h4>{{ product.name }}</h4>
+                                <a href="{% url 'store:product_detail' pk=product.pk %}">view</a>
+                            </div> -->
+                            <h4>{{ product.name }}</h4>
+                            <a href="{% url 'store:product_detail' pk=product.pk %}">view <i class="fa fa-arrow-right"></i></a>
+						</div>
+						<div class="caption">
+							<h4>{{ product.name }}</h4>
+						</div>
+					</div>
+                    {% empty %}
+                        <h3>There are no products yet</h3>
+                    {% endfor %}
+                </div>
+			</div>
+		</section>
+		<section class="showcase4">
+			<div class="containers">
+				<div class="ins">
+					<div class="cont">
+						<div class="leftside">
+							<h1>Most<br>Stylish<br>Collection</h1>
+							<p>Stock Up On Our Best-Selling<br>T-shirt for everyone</p>
+							<br>
+							<a href="{% url 'store:store' %}">Shop Now <i class="fa fa-arrow-right"></i></a>
+						</div>
+						<div class="rightside">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="bottom-show">
+			<div class="containers">
+				<div class="icons">
+					<div class="icon">
+						<i class="fa fa-envelope"></i>
+						<p>A Question? Write To Us At <br> anywhere@gmail.com</p>
+					</div>
+					<div class="icon">
+						<i class="fa fa-credit-card"></i>
+						<p>Secure Credit Card Payment</p>
+					</div>
+					<div class="icon">
+						<i class="fa fa-delivery"></i>
+						<i class="fa fa-shipping-fast"></i>
+						<p>Free Delivery For Orders<br>Over $250</p>
+					</div>
+					<div class="icon">
+						<i class="fas fa-plane"></i>
+						<p>Return Of Goods From Anywhere<br>In The World</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="last-show">
+			<div class="containers">
+				<div class="bottom">
+					<ul class="bottom-list">
+						<h3>Customer Service</h3>
+						<li>
+							<a href="#">Need Help</a>
+						</li>
+						<li>
+							<a href="#">FAQ</a>
+						</li>
+						<li>
+							<a href="#">Secure Payment</a>
+						</li>
+						<li>
+							<a href="#">Delivery</a>
+						</li>
+						<li>
+							<a href="#">Returns and Funds</a>
+						</li>
+						<li>
+							<a href="#">Contact Us</a>
+						</li>
+					</ul>
+					<ul class="bottom-list">
+						<h3>Special Service</h3>
+						<li>
+							<a href="#">Free delivery for order over $250</a>
+						</li>
+						<li>
+							<a href="#">Chronapost express delivery 24h</a>
+						</li>
+						<li>
+							<a href="#">E-reservations</a>
+						</li>
+						<li>
+							<a href="#">Expended returns</a>
+						</li>
+					</ul>
+					<ul class="bottom-list">
+						<h3>Follow Us</h3>
+						<li>
+							<a href="#">Instagram</a>
+						</li>
+						<li>
+							<a href="#">FaceBook</a>
+						</li>
+						<li>
+							<a href="#">Twitter</a>
+						</li>
+						<li>
+							<a href="#">Pinterest</a>
+						</li>
+					</ul>
+					<ul class="bottom-list last">
+						<h3>News Letter</h3>
+						<p>Sign Up For Email Updates On The Latest <br> Collections. Campaigns And Video</p>
+						<input type="text" name="email" placeholder="Email address">
+						<div class="social">
+							<i class="fab fa-youtube"></i>
+							<i class="fab fa-facebook"></i>
+							<i class="fab fa-instagram"></i>
+						</div>	
+					</ul>	
+				</div>
+			</div>
+		</section>
+	</main>
+
+
+	<footer>
+		<p>Copyright &copy; 2021 Powered By Hydra. All Rights reserved </p>
+	</footer>
+
+	<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/home.js' %}"></script>
+</body>
+</html>
